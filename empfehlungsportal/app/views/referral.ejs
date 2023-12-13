@@ -1,0 +1,34 @@
+<%- include('partials/header') %>
+
+            <div style="font-size: 12pt;">
+                <h1>Empfehlungsschreiben einreichen</h1>
+                <br />
+                <p>Sie möchten ein Empfehlungsschreiben für eine Bewerberin oder einen Bewerber hinterlegen? Das freut uns sehr.
+                    Bitte füllen Sie hierzu das folgende Formular aus. Ihre Empfehlung wird anhand der E-Mail-Adresse
+                    der Bewerberin oder des Bewerbers automatisch korrekt zugeordnet.
+                </p>
+                <br />
+                <form action="/referral" method="POST">
+                                     
+                        <table>
+                            <tr>
+                                <td style="width:30%;">E-Mail-Adresse des Bewerbers</td>
+                                <td style="width: 70%;"><input class="input--style-4" type="email" id="applicantEmail" name="applicantEmail" autofocus></td>
+                            </tr>
+                            <tr>
+                                <br />
+                                <td style="width:30%;">Ihre E-Mail-Adresse</td>
+                                <td style="width: 70%;"><input class="input--style-4" type="email" id="referrerEmail" name="referrerEmail"></td>
+                            </tr>
+                            <tr>
+                                <br />
+                                <td style="width:30%;">Empfehlungsschreiben</td>
+                                <td style="width: 70%;"><textarea class="input--style-4" rows="5" id="refContent" name="refContent" style="width: 100%;"></textarea></td>
+                            </tr>
+                        </table>
+                        <br />
+                    <button class="btn btn--radius-2 btn--blue" type="submit">Absenden</button>
+                </form>
+            </div>
+
+<%- include('partials/footer') %>

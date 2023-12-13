@@ -1,0 +1,26 @@
+version: '3.0'
+
+services:
+  db:
+    container_name: db
+    build: ./db
+    environment:
+      POSTGRES_USER: uzk-admin
+      POSTGRES_PASSWORD: LjVNCcNG5F5T
+      POSTGRES_DB: uzk-empfehlung
+    #volumes: 
+    #  - ./db/data/:/var/lib/postgresql/data
+  app:
+    container_name: app
+    build: ./app
+    depends_on: 
+      - db
+    ports:
+      - 3001:3001
+    environment:
+      POSTGRES_HOST: db
+      POSTGRES_USER: uzk-admin
+      POSTGRES_PASSWORD: LjVNCcNG5F5T
+      POSTGRES_DB: uzk-empfehlung
+    labels:
+      - "traefik.http.routers.referral.rule=Host(`referral.colasloth.com`)"
