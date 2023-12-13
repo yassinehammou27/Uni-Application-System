@@ -1,0 +1,52 @@
+<%- include('partials/header') %>
+
+<h1><%= title %></h1>
+<br />
+<p>Hier finden Sie die Übersicht über alle aktiven Bewerbungen</p>
+<br />
+<table class="studentOverviewTables" style="width: 100%">
+  <tr style="text-align: left; padding: 5px 10px">
+    <th>Vorname</th>
+    <th>Nachname</th>
+    <th>E-Mail</th>
+    <th>Status</th>
+    <th>Aktionen</th>
+  </tr>
+  <% for(let i = 0; i < users.length; i++) { %>
+  <tr>
+    <% if (users[i]) { %> <% if (users[i].first_name) { %>
+
+    <td><%= users[i].first_name %></td>
+    <% } else { %>
+    <td></td>
+    <% } %> <% if (users[i].last_name) { %>
+    <td><%= users[i].last_name %></td>
+    <% } else { %>
+    <td></td>
+    <% } %> <% if (users[i].email) { %>
+    <td><%= users[i].email %></td>
+    <% } else { %>
+    <td></td>
+    <% } %> <% if (users[i].current_status === 0) { %>
+    <td style="background-color: yellow">Aktiv</td>
+    <% } else if (users[i].current_status === 1) { %>
+    <td style="background-color: green">Angenommen</td>
+    <% } else if (users[i].current_status === 2) { %>
+    <td style="background-color: red">Abgelehnt</td>
+    <% } else {%>
+    <td></td>
+    <% } %>
+
+    <td>
+      <a href="/student/<%=users[i].id%>">Zum Profil</a>
+      <!-- <a
+      href="mailto:<%= users[i].email %>?subject=Sie%20sind%20zugelassen!&amp;body=Sehr%20geehrte/r%20Frau/Herr%20<%= users[i].firstName %>%20<%= users[i].lastName %>,%0D%0AHerzlichen%20Glückwunsch!%20Sie%20wurden%20zugelassen%20zum%20Studiengang%20Informatik%20an%20der%20Universität%20zu%20Köln."
+      ><button>Zulassen</button></a
+      > -->
+    </td>
+    <% } %>
+  </tr>
+  <% }%>
+</table>
+
+<%- include('partials/footer') %>

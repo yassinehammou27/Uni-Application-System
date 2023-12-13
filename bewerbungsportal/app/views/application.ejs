@@ -1,0 +1,109 @@
+<%- include('partials/header') %>    
+            <div style="font-size: 12pt">
+                <h1>Bewerbung</h1>
+                <br />
+                <form action="/application" method="POST">
+                    <p>Bitte füllen Sie zur Bewerbung folgendes Formular aus.</p>
+                    <br />
+                    <table border="0">
+                        <tr>
+                            <td>
+                                <label for="firstName">Vorname* </label>
+                            </td>
+                            <td>
+                                <input class="input--style-4" type="text" id="firstName" name="firstName" autofocus>
+                                <br /><br />
+                            </td>  
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="lastName">Nachname* </label>
+                            </td>
+                            <td>
+                                <input class="input--style-4" type="text" id="lastName" name="lastName">
+                                <br /><br />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="dateOfBirth">Geburtsdatum*</label>
+                            </td>
+                            <td>
+                                <input class="input--style-4" type="date" id="dateOfBirth" name="dateOfBirth">
+                                <br /><br />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="street">Straße* </label>
+                            </td>
+                            <td>
+                                <input class="input--style-4" type="text" id="street" name="street" autofocus>
+                                <br /><br />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="streetNumber">Hausnummer* </label>
+                            </td>
+                            <td>
+                                <input class="input--style-4" type="text" id="streetNumber" name="streetNumber" autofocus>
+                                <br /><br />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="zipCode">Postleitzahl* </label>
+                            </td>
+                            <td>
+                                <input class="input--style-4" type="text" id="zipCode" name="zipCode" autofocus>
+                                <br /><br />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="city">Ort* </label>
+                            </td>
+                            <td>
+                                <input class="input--style-4" type="text" id="city" name="city" autofocus>
+                                <br /><br />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="schoolGradeAvg">Abiturdurchschnittsnote* </label>
+                            </td>
+                            <td>
+                                <input class="input--style-4" type="text" id="schoolGradeAvg" name="schoolGradeAvg" autofocus>
+                                <br /><br />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="phoneNumber">Telefonnummer* </label>
+                            </td>
+                            <td>
+                                <input class="input--style-4" type="text" id="phoneNumber" name="phoneNumber" autofocus>
+                                <br /><br />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="motivationLetter">Motivation* </label>
+                            </td>
+                            <td>
+                                <textarea class="input--style-4" id="motivationLetter" name="motivationLetter" cols="35" rows="4"></textarea>
+                                <br /><br />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <input class="btn btn--radius-2 btn--blue" type="submit" value="Bewerbung absenden">
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,30 @@
+version: '3.0'
+
+services:
+  db:
+    container_name: db
+    build: ./db
+    restart: always
+    environment:
+      POSTGRES_USER: uzk-admin
+      POSTGRES_PASSWORD: LjVNCcNG5F5T
+      POSTGRES_DB: uzk-info
+      SERVICE_NAME: bewerbungsportal-db
+    volumes: 
+      - ./db/data/:/var/lib/postgresql/data
+  app:
+    container_name: app
+    build: ./app
+    restart: always
+    depends_on: 
+      - db
+    ports:
+      - 3000:3000
+    environment:
+      POSTGRES_HOST: db
+      POSTGRES_USER: uzk-admin
+      POSTGRES_PASSWORD: LjVNCcNG5F5T
+      POSTGRES_DB: uzk-info
+      SERVICE_NAME: bewerbungsportal-app
+    labels:
+      - "traefik.http.routers.bewerbungsportal-app.rule=Host(`app.colasloth.com`)"

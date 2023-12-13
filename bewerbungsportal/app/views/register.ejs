@@ -1,0 +1,44 @@
+<%- include('partials/header') %>
+
+  <div>
+       <form action="/register" method="POST">
+         
+                  <h2 class="title">Registrierung</h2>
+
+                    <div class="row row-space">
+                      <div class="col-2">
+                        <div class="input-group">
+                            <label class="label">E-Mail</label>
+                            <input class="input--style-4" type="email" name="email">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row row-space">
+                      <div class="col-2">
+                        <div class="input-group">
+                            <label class="label">Passwort</label>
+                            <input type="password" class="input--style-4" type="password" name="password">
+                        </div>
+                      </div>
+                      <div class="col-2">
+                        <div class="input-group">
+                            <label class="label">Passwort wiederholen</label>
+                            <input type="password" class="input--style-4" id= "passConf" name="passConf">
+                        </div>
+                      </div>
+                    </div>
+                            <div class="p-t-15">
+                                <a href="/profile"><button class="btn btn--radius-2 btn--blue" type="submit">Registrieren</button><a>
+                            </div>
+                            <br></br>
+                            <p class="label">Sie haben bereits einen Account? Hier geht es zum <a href="/login">Login</a>.</p>
+
+            </div>
+          </div>
+       </div>
+     </form>
+
+  </div>
+
+
+<%- include('partials/footer') %>

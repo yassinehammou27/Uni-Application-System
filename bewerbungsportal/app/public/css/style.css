@@ -1,0 +1,16 @@
+.nav {
+  display: flex;
+  align-items: center;
+}
+
+.uzklogo {
+  margin: 0;
+}
+
+.link-list {
+  margin-left: 2rem;
+}
+
+.link-list > a {
+  padding: 0 5px;
+}

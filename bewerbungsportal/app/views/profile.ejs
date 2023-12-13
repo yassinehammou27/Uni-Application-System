@@ -1,0 +1,136 @@
+<%- include('partials/header') %>
+
+                    <h2 class="title">Mein Profil</h2>
+<!--BEWERBERDATEN-->
+                  <% if (user && user.is_student===1) { %>
+                    <div class="row">
+                      <div class="column">
+                        <h3 class="title" id="h3">Persönliche Daten</h3>
+                        <table class="profileTables" style="border: none;">
+                          <tr style="border: none; background-color: none;">
+                            <td><b>Bewerber-ID:</b></td>
+                            <td><%- user.id %></td>
+                          </tr>
+                          <tr style="border: none; background-color: none;">
+                            <td><b>Vorname:</b></td>
+                            <td><%- user.first_name %></td>
+                          </tr>
+                          <tr style="border: none; background-color: none;">
+                            <td><b>Nachname:</b></td>
+                            <td><%- user.last_name %></td>
+                          </tr>
+                          <tr style="border: none; background-color: none;">
+                            <td><b>Email:</b></td>
+                            <td><%- user.email %></td>
+                          </tr>
+                          <tr style="border: none; background-color: none;">
+                            <td><b>Straße:</b></td>
+                            <td><%- user.street %></td>
+                          </tr>
+                          <tr style="border: none; background-color: none;">
+                            <td><b>Hausnummer:</b></td>
+                            <td><%- user.street_number%></td>
+                          </tr>
+                          <tr style="border: none; background-color: none;">
+                            <td><b>Stadt:</b></td>
+                            <td><%- user.city %></td>
+                          </tr>
+                        </table>
+                     </div>
+
+                      <div class="column">
+                        <h3 class="title h3" id="h3">Bewerbung</h3>
+                        
+                        <% if (application.rows.length) { %>
+                          <table class="profileTables">
+                          <tr style="border: none; background-color: none;">
+                            <td><b>Abiturnote:</b></td>
+                            <td><%- user.school_grade_avg %></td>
+                          </tr>
+                          <tr style="border: none; background-color: none;">
+                            <td><b>Motivationsschreiben:</b></td>
+                            <td><%- application.rows[0].motivation_letter %></td>
+                          </tr>
+                        </table>
+                        <% } %>
+                        
+                      </div>
+                      <div class="column">
+                        <h3 class="title" id="h3">Empfehlungsschreiben</h3>
+                        <table class="referralTable">
+                          <tr>
+                            <td style="width: 30%;"><b>Empfehlender</b></td>
+                            <td style="width: 70%;"><b>Inhalt des Empfehlungsschreibens</b></td>
+                          </tr>
+                          <% for(let i=0; i < recommendation.rows.length; i++){ %>
+                            <tr>
+                              <td style="width: 30%;"><%= recommendation.rows[i].referrer_email %></td>
+                              <td style="width: 70%;"><%= recommendation.rows[i].content %></td>
+                            </tr>
+                          <% } %>
+                        </table>
+                      </div>
+                    </div>
+                  <% } %>
+
+<!-- PASSWORT ÄNDERN -->
+                   <button type="button" class="collapsible">Passwort ändern</button>
+                    <div class="collcontent">
+                      <form action="/updpass" method="POST">
+                      <br />
+                          <p>Passwort: min. 8 Zeichen.</p>
+                          <p><strong>Muss</strong> beinhalten: min. 1 Kleinbuchstabe, 1 Großbuchstabe und 1 Ziffer</p>
+                      <br></br>
+                      <div class="row row-space">
+                        <div class="col-2">
+                          <div class="input-group">
+                                  <label for="password" class="label">Aktuelles Passwort:</label>
+                                  <input class="input--style-4" type="password" id="password" name="password">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row row-space">
+                          <div class="col-2">
+                              <div class="input-group">
+                                  <label for="newpass" class="label">Neues Passwort:</label>
+                                  <input class="input--style-4" type="password" id="newpass" name="newpass">
+                              </div>
+                          </div>
+                          <div class="col-2">
+                              <div class="input-group">
+                                  <label for="newpassconf" class="label">Neues Passwort bestätigen:</label>
+                                  <input class="input--style-4" type="password" id="newpassconf" name="newpassconf">
+                              </div>
+                          </div>
+                          <button type="submit" class="btn btn--radius-2 btn--blue">Passwort ändern</button>
+
+                      </form>
+                    </div>
+
+<!-- SCRIPT FÜR PASSWORT ÄNDERN DROPDOWN -->
+
+                      <script>
+                      var coll = document.getElementsByClassName("collapsible");
+                      var i;
+
+                      for (i = 0; i < coll.length; i++) {
+                        coll[i].addEventListener("click", function() {
+                          this.classList.toggle("active");
+                          var content = this.nextElementSibling;
+                          if (content.style.display === "block") {
+                            content.style.display = "none";
+                          } else {
+                            content.style.display = "block";
+                          }
+                        });
+                      }
+                     </script>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+<%- include('partials/footer') %>

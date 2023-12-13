@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <!-- Required meta tags -->
+    <meta charset="UTF-8">
+
+    <!-- Title Page-->
+    <title><%= title %></title>
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Main CSS-->
+    <link href="" rel="stylesheet" media="all">
+    <link href="profil.css" rel="stylesheet" type="text/css">
+  
+   
+   
+    <link rel="stylesheet" href="https://fonts.xz.style/serve/inter.css" />
+  </head>
+  <body>
+    <header>
+      <div class="uzklogodiv" align="right">
+        <h1 class="title title2">Fakultät für Informatik</h1>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/SiegelUniK%C3%B6ln.svg" alt="UzK-Logo" class="uzklogo" width="100" height="100" >
+      </div>
+    
+      <!--Navbar-->
+        <div class="topnav">
+          <% if (user && (user.is_student === 1 || user.isStudent === 1)) { %>
+            <a href="/profile">Mein Profil</a>
+            <% } else if (user && (user.is_student === 0 || user.isStudent === 0)) { %>
+            <a href="/student/overview">Studierenden-Übersicht</a>
+            <% } else { %>
+            <a href="/login">Login</a>
+            <a href="/register">Register</a>
+            <a href="/referral">Empfehlungsschreiben</a>
+            <% } %>
+          <% if (user) { %>
+          <div class="topnav-right">
+            <a href="/logout">Logout</a>
+          </div>
+          <% } %>
+        </div>
+
+    </header>
+
+    <div class="main">
+      <div class="message"><%= message %></div>
+    </div>
+    <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
+      <div class="wrapper wrapper">
+        <div class="card card-4">
+          <div class="card-body">

@@ -1,0 +1,63 @@
+<%- include('partials/header') %>
+<h2>Profil von <%- student.email%></h2>
+<br />
+<div class="userInfo">
+  <% if (student) { %>
+  <table class="profileTables" style="border: none">
+    <tr style="border: none; background-color: none">
+      <td><b>Bewerber-ID:</b></td>
+      <td><%- student.id %></td>
+    </tr>
+    <tr style="border: none; background-color: none">
+      <td><b>Vorname:</b></td>
+      <td><%- student.first_name %></td>
+    </tr>
+    <tr style="border: none; background-color: none">
+      <td><b>Nachname:</b></td>
+      <td><%- student.last_name %></td>
+    </tr>
+    <tr style="border: none; background-color: none">
+      <td><b>Straße:</b></td>
+      <td><%- student.street %></td>
+    </tr>
+    <tr style="border: none; background-color: none">
+      <td><b>Hausnummer:</b></td>
+      <td><%- student.street_number%></td>
+    </tr>
+    <tr style="border: none; background-color: none">
+      <td><b>Stadt:</b></td>
+      <td><%- student.city %></td>
+    </tr>
+    <% if (application.rows.length) { %>
+    <tr style="border: none; background-color: none">
+      <td><b>Motivationsschreiben:</b></td>
+      <td><%- application.rows[0].motivation_letter %></td>
+    </tr>
+    <% } %>
+  </table>
+  <% } %>
+  <br />
+  <h3>Empfehlungsschreiben</h3>
+  <br />
+  <table class="referralTable">
+    <tr>
+      <td style="width: 30%"><b>Empfehlender</b></td>
+      <td style="width: 70%"><b>Inhalt des Empfehlungsschreibens</b></td>
+    </tr>
+    <% for(let i=0; i < recommendation.rows.length; i++){ %>
+    <tr>
+      <td style="width: 30%"><%= recommendation.rows[i].referrer_email %></td>
+      <td style="width: 70%"><%= recommendation.rows[i].content %></td>
+    </tr>
+    <% } %>
+  </table>
+
+  <% if (student.current_status === 0) { %>
+  <a href="/accept-student/<%= student.id%>"><button class="btn btn--radius-2 btn--blue" >Zulassen</button></a>
+  <a href="/reject-student/<%= student.id %>">
+    <button class="btn btn--radius-2 btn--blue" >Ablehnen</button>
+  </a>
+   <% } %>
+</div>
+
+<%- include('partials/footer') %>
